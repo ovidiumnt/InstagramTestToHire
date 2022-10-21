@@ -24,7 +24,7 @@ class ViewController: UIViewController {
         self.instagramApi.getMedia() { (media) in
             if media.media_type != UserMedia.MediaType.VIDEO {
                 guard let media_url = media.media_url else {
-                    print("Media URL is NULL. There are no pictures or videos on the account.")
+                    print("Media URL is null. There are no pictures or videos on the account.")
                     return
                 }
                 
