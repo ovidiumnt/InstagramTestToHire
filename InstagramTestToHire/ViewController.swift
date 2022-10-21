@@ -34,12 +34,12 @@ class ViewController: UIViewController {
                             self.backgroundImageView.image = UIImage(data: imageData)
                         }
                     } else {
-                        print("Didn’t fetched the data")
+                        print("Didn’t fetched the data.")
                     }
                 })
                 print(media_url)
             } else {
-                print("Fetched media is a video")
+                print("Fetched media is a video.")
             }
         }
     }
