@@ -9,20 +9,20 @@
 /* Begin PBXBuildFile section */
 		A99C1C4529027BBD001B8D2A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99C1C4429027BBD001B8D2A /* AppDelegate.swift */; };
 		A99C1C4729027BBD001B8D2A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99C1C4629027BBD001B8D2A /* SceneDelegate.swift */; };
-		A99C1C4929027BBD001B8D2A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99C1C4829027BBD001B8D2A /* ViewController.swift */; };
 		A99C1C4C29027BBD001B8D2A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A99C1C4A29027BBD001B8D2A /* Main.storyboard */; };
 		A99C1C4E29027BBE001B8D2A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A99C1C4D29027BBE001B8D2A /* Assets.xcassets */; };
 		A99C1C5129027BBE001B8D2A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A99C1C4F29027BBE001B8D2A /* LaunchScreen.storyboard */; };
 		A99C1C59290286FA001B8D2A /* InstagramAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99C1C58290286FA001B8D2A /* InstagramAPI.swift */; };
 		A99C1C5C290288FF001B8D2A /* UserMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99C1C5B290288FF001B8D2A /* UserMedia.swift */; };
 		A99C1C5E29028C47001B8D2A /* UserFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99C1C5D29028C47001B8D2A /* UserFeed.swift */; };
+		A9AC1279290680CA00D5BFA5 /* ImagesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AC1278290680CA00D5BFA5 /* ImagesCollectionViewCell.swift */; };
+		A9AC127D2906817100D5BFA5 /* ImagesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AC127C2906817100D5BFA5 /* ImagesCollectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A99C1C4129027BBD001B8D2A /* InstagramTestToHire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstagramTestToHire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A99C1C4429027BBD001B8D2A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A99C1C4629027BBD001B8D2A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A99C1C4829027BBD001B8D2A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A99C1C4B29027BBD001B8D2A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A99C1C4D29027BBE001B8D2A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A99C1C5029027BBE001B8D2A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -30,6 +30,8 @@
 		A99C1C58290286FA001B8D2A /* InstagramAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramAPI.swift; sourceTree = "<group>"; };
 		A99C1C5B290288FF001B8D2A /* UserMedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMedia.swift; sourceTree = "<group>"; };
 		A99C1C5D29028C47001B8D2A /* UserFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeed.swift; sourceTree = "<group>"; };
+		A9AC1278290680CA00D5BFA5 /* ImagesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesCollectionViewCell.swift; sourceTree = "<group>"; };
+		A9AC127C2906817100D5BFA5 /* ImagesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesCollectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,14 +64,13 @@
 		A99C1C4329027BBD001B8D2A /* InstagramTestToHire */ = {
 			isa = PBXGroup;
 			children = (
+				A9AC127B290680F400D5BFA5 /* UserInterface */,
+				A9AC127A290680DE00D5BFA5 /* ViewController */,
 				A99C1C5F29028ED3001B8D2A /* API */,
 				A99C1C5A290288DC001B8D2A /* Model */,
 				A99C1C4429027BBD001B8D2A /* AppDelegate.swift */,
 				A99C1C4629027BBD001B8D2A /* SceneDelegate.swift */,
-				A99C1C4829027BBD001B8D2A /* ViewController.swift */,
-				A99C1C4A29027BBD001B8D2A /* Main.storyboard */,
 				A99C1C4D29027BBE001B8D2A /* Assets.xcassets */,
-				A99C1C4F29027BBE001B8D2A /* LaunchScreen.storyboard */,
 				A99C1C5229027BBE001B8D2A /* Info.plist */,
 			);
 			path = InstagramTestToHire;
@@ -90,6 +91,24 @@
 				A99C1C58290286FA001B8D2A /* InstagramAPI.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		A9AC127A290680DE00D5BFA5 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A9AC1278290680CA00D5BFA5 /* ImagesCollectionViewCell.swift */,
+				A9AC127C2906817100D5BFA5 /* ImagesCollectionViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		A9AC127B290680F400D5BFA5 /* UserInterface */ = {
+			isa = PBXGroup;
+			children = (
+				A99C1C4F29027BBE001B8D2A /* LaunchScreen.storyboard */,
+				A99C1C4A29027BBD001B8D2A /* Main.storyboard */,
+			);
+			path = UserInterface;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,11 +182,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A99C1C4929027BBD001B8D2A /* ViewController.swift in Sources */,
+				A9AC127D2906817100D5BFA5 /* ImagesCollectionViewController.swift in Sources */,
 				A99C1C59290286FA001B8D2A /* InstagramAPI.swift in Sources */,
 				A99C1C4529027BBD001B8D2A /* AppDelegate.swift in Sources */,
 				A99C1C5C290288FF001B8D2A /* UserMedia.swift in Sources */,
 				A99C1C5E29028C47001B8D2A /* UserFeed.swift in Sources */,
+				A9AC1279290680CA00D5BFA5 /* ImagesCollectionViewCell.swift in Sources */,
 				A99C1C4729027BBD001B8D2A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

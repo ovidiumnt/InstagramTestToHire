@@ -8,7 +8,7 @@
 import Foundation
 
 class InstagramApi {
-  static let instagramApi = InstagramApi()
+    static let instagramApi = InstagramApi()
     
     private let apiGetMediaData = "https://graph.instagram.com/me/media"
     private let apiGetMedia = "https://graph.instagram.com/"
@@ -18,6 +18,7 @@ class InstagramApi {
 
     }
     
+    // Citim MediaData pentru token-ul userului respectiv
     private func getMediaData(completion: @escaping (UserFeed) -> Void) {
         
         let urlString = "\(apiGetMediaData)?access_token=\(token)"
@@ -41,6 +42,9 @@ class InstagramApi {
         task.resume()
     }
     
+    // Pentru fiecare media data din array-ul returnat de JSON din functia de mai sus
+    // Citim JSON-ul care ar trebui sa returneze media (poze / clipuri)
+    // Parcurgem fiecare media si o punem in CollectionViewController-ul din UI. => cum se face asta?
     func getMedia(completion: @escaping (UserMedia) -> Void) {
         getMediaData() { (mediaFeed) in
             for i in 0..<(mediaFeed.data.count - 1) {
@@ -67,6 +71,7 @@ class InstagramApi {
         }
     }
     
+    // Nu inteleg foarte clar ce face functia asta
     func fetchImage(urlString: String, completion: @escaping (Data?) -> Void) {
         let request = URLRequest(url: URL(string: urlString)!)
         let session = URLSession.shared
