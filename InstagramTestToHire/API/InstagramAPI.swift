@@ -12,13 +12,14 @@ class InstagramApi {
     
     private let apiGetMediaData = "https://graph.instagram.com/me/media"
     private let apiGetMedia = "https://graph.instagram.com/"
-    private let token = "IGQVJXSXdTS1pEN2FrYkphT2wwNlZAIamVFWmZARWUNNTUVFbF9hTWdfM2FycVFfT056MmNfeTl6QzNyWVlaZA3dJNmNsNEtJSUJwdzBmWEhiUkw4VjRGbHBaWjU4MmJYaHhpc2tSWGxYczJlN0xVWE5ZAUQZDZD"
+    private let token = "IGQVJVdjJlMlNNamZAZAYnAydXNlNEczaFlBTXVDZA2p6ckxUV1J5aUttanJhNWNRdzMxbVk4dG1FdzFMNVNqazB2T1FXcU15d2VIUjE2SlNvdHFLdDJRNGVuN25sYUU0Y0phSG15RjgzZA3lkdHBjSS1uNQZDZD"
 
     private init () {
 
     }
     
-    // Citim MediaData pentru token-ul userului respectiv
+    // Citim datele din API pentru token-ul userului respectiv
+    // UserFeed este clasa model pentru deserializarea JSON-ului returnat de API
     private func getMediaData(completion: @escaping (UserFeed) -> Void) {
         
         let urlString = "\(apiGetMediaData)?access_token=\(token)"
@@ -29,7 +30,7 @@ class InstagramApi {
         
         let task = session.dataTask(with: request, completionHandler: { data, response, error in
             if let response = response {
-                //print(response)
+                print(response)
             }
             do {
                 let jsonData = try JSONDecoder().decode(UserFeed.self, from: data!)
@@ -44,7 +45,6 @@ class InstagramApi {
     
     // Pentru fiecare media data din array-ul returnat de JSON din functia de mai sus
     // Citim JSON-ul care ar trebui sa returneze media (poze / clipuri)
-    // Parcurgem fiecare media si o punem in CollectionViewController-ul din UI. => cum se face asta?
     func getMedia(completion: @escaping (UserMedia) -> Void) {
         getMediaData() { (mediaFeed) in
             for i in 0..<(mediaFeed.data.count - 1) {
@@ -56,7 +56,7 @@ class InstagramApi {
                 
                 let task = session.dataTask(with: request, completionHandler: { data, response, error in
                     if let response = response {
-                        //print(response)
+                        print(response)
                     }
                     do {
                         let jsonData = try JSONDecoder().decode(UserMedia.self, from: data!)
@@ -71,14 +71,14 @@ class InstagramApi {
         }
     }
     
-    // Nu inteleg foarte clar ce face functia asta
+    // Preluam imaginile efectiv si returnam un binar in Data
     func fetchImage(urlString: String, completion: @escaping (Data?) -> Void) {
         let request = URLRequest(url: URL(string: urlString)!)
         let session = URLSession.shared
         
         let task = session.dataTask(with: request, completionHandler: { data, response, error in
             if let response = response {
-                //print(response)
+                print(response)
             }
             completion(data)
           })

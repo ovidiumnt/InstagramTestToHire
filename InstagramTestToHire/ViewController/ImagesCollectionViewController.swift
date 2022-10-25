@@ -24,10 +24,10 @@ class ImagesCollectionViewController: UICollectionViewController {
         //self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
-        fetchImageToBackground()
+        fetchImage()
     }
 
-    func fetchImageToBackground() {
+    func fetchImage() {
         instagramApi.getMedia() { (media) in
             if media.media_type != UserMedia.MediaType.VIDEO {
                 guard let media_url = media.media_url else {
@@ -38,10 +38,8 @@ class ImagesCollectionViewController: UICollectionViewController {
                 instagramApi.fetchImage(urlString: media_url, completion: { (fetchedImage) in
                     if let imageData = fetchedImage {
                         DispatchQueue.main.async {
-                            // CUM PUN IMAGINEA CARE SE FETCHUIE AICI
-                            // IN CELL-ul COLLECTIONVIEW-ului de la linia 83...?
-                            
-                            //backgroundImageView.image = UIImage(data: imageData)
+                            // Parcurgem fiecare media si o punem in CollectionViewController-ul din UI.
+                            // => trebuie studiat cum se face asta
                         }
                     } else {
                         print("Didn’t fetched the data.")
@@ -63,7 +61,7 @@ class ImagesCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
         
-        //CUM CITESC AICI NUMARUL DE ITEM-URI CONTINUTE IN <media> de la linia 31?
+        //Aici trebuie studiat cum returnez numarul de item-uri din <media> de la linia 31
         return 0
     }
 
@@ -71,8 +69,9 @@ class ImagesCollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "dataCell", for: indexPath) as! ImagesCollectionViewCell
            
                
-        //let images = media[indexPath.row]
-        //images.instagramImageView.image = UIImage(named: city.image)
+        //
+        //
+        //
            
         return cell
     }
