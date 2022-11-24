@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="js5-M2-5Nu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iTI-s1-1DP">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,31 +17,31 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gtq-bg-S91">
-                            <size key="itemSize" width="128" height="128"/>
+                            <size key="itemSize" width="390" height="172"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="dataCell" id="TKY-sv-8AO" customClass="ImagesCollectionViewCell" customModule="InstagramTestToHire" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="172" height="172"/>
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="172"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="TZI-dK-gfb">
-                                    <rect key="frame" x="0.0" y="0.0" width="172" height="172"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="172"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ljP-au-yaE">
-                                            <rect key="frame" x="8" y="0.0" width="156" height="172"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ljP-au-yaE">
+                                            <rect key="frame" x="8" y="0.0" width="374" height="172"/>
                                         </imageView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="ljP-au-yaE" firstAttribute="leading" secondItem="TZI-dK-gfb" secondAttribute="leadingMargin" id="GAi-ph-vzw"/>
-                                        <constraint firstItem="ljP-au-yaE" firstAttribute="trailing" secondItem="TZI-dK-gfb" secondAttribute="trailingMargin" id="IhE-p2-vrN"/>
-                                        <constraint firstItem="ljP-au-yaE" firstAttribute="top" secondItem="TZI-dK-gfb" secondAttribute="top" id="SiZ-fI-oUq"/>
-                                        <constraint firstItem="ljP-au-yaE" firstAttribute="centerY" secondItem="TZI-dK-gfb" secondAttribute="centerY" id="egL-gH-q2a"/>
+                                        <constraint firstItem="ljP-au-yaE" firstAttribute="trailing" secondItem="TZI-dK-gfb" secondAttribute="trailingMargin" id="4hz-vg-wTp"/>
+                                        <constraint firstItem="ljP-au-yaE" firstAttribute="top" secondItem="TZI-dK-gfb" secondAttribute="top" id="Gaf-Yv-TTj"/>
+                                        <constraint firstItem="ljP-au-yaE" firstAttribute="centerY" secondItem="TZI-dK-gfb" secondAttribute="centerY" id="oNk-H4-AuW"/>
+                                        <constraint firstItem="ljP-au-yaE" firstAttribute="leading" secondItem="TZI-dK-gfb" secondAttribute="leadingMargin" id="rCz-rP-lcx"/>
                                     </constraints>
                                 </collectionViewCellContentView>
-                                <size key="customSize" width="172" height="172"/>
+                                <size key="customSize" width="390" height="172"/>
                                 <connections>
                                     <outlet property="instagramImageView" destination="ljP-au-yaE" id="Eaw-bK-VRP"/>
                                 </connections>
@@ -52,8 +52,39 @@
                             <outlet property="delegate" destination="js5-M2-5Nu" id="E5Q-OY-ZgO"/>
                         </connections>
                     </collectionView>
+                    <navigationItem key="navigationItem" id="Jew-4S-Z8G">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="Zyj-rV-wTv">
+                            <textField key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your token here then press Enter!" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" id="xf5-7h-guO">
+                                <rect key="frame" x="16" y="5" width="352" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                                <connections>
+                                    <outlet property="delegate" destination="js5-M2-5Nu" id="UNK-V0-TK5"/>
+                                </connections>
+                            </textField>
+                        </barButtonItem>
+                    </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3D8-Wc-Owb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="495.38461538461536" y="29.857819905213269"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="XGf-uh-oMt">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iTI-s1-1DP" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dZn-ji-7yh">
+                        <rect key="frame" x="0.0" y="47" width="390" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="js5-M2-5Nu" kind="relationship" relationship="rootViewController" id="bVn-pf-kay"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uvu-KL-zFx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-433.84615384615381" y="29.857819905213269"/>
         </scene>
