@@ -63,7 +63,7 @@ class ImagesCollectionViewController: UICollectionViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        
+        //
         // But we are using a prototype cell, so we don't this default behaviour
         // self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
