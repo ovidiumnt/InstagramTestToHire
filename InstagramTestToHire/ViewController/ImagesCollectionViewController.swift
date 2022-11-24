@@ -112,10 +112,6 @@ class ImagesCollectionViewController: UICollectionViewController {
         
         let url = URL(string: mediaArray![indexPath.row] as! String)
         downloadImage(from: url!, imageView: cell.instagramImageView)
-        
-        /*let url = URL(string: "https://scontent.cdninstagram.com/v/t51.2885-15/19933412_490344898024250_6550875001090736128_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=8ae9d6&_nc_ohc=q-k5VngxTmMAX82eXL3&_nc_ht=scontent.cdninstagram.com&edm=ANQ71j8EAAAA&oh=00_AfBd3WayyMRN4S7ujqFwBRRwHNk9Sz64pjAl-BoPH9jzig&oe=63834452")
-         
-         downloadImage(from: url!, imageView: cell.instagramImageView)*/
     
         return cell
     }
@@ -135,14 +131,12 @@ class ImagesCollectionViewController: UICollectionViewController {
         }
     }
     
-    func getLayout() -> UICollectionViewLayout
-        {
-            let layout:UICollectionViewFlowLayout =  UICollectionViewFlowLayout()
-
-            layout.itemSize = CGSize(width: 240, height: 240)
-            layout.sectionInset = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
-
-            return layout as UICollectionViewLayout
-
-        }
+    func getLayout() -> UICollectionViewLayout {
+        let layout:UICollectionViewFlowLayout =  UICollectionViewFlowLayout()
+        
+        layout.itemSize = CGSize(width: 240, height: 240)
+        layout.sectionInset = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
+        
+        return layout as UICollectionViewLayout
+    }
 }
