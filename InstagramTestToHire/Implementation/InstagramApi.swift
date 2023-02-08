@@ -9,7 +9,7 @@ import Foundation
 
 class InstagramApi : InstagramApiProtocol {
     
-    // Implementation class of the InstagramApiProtocol protocol (interface) 
+    // Implementation class of the InstagramApiProtocol protocol (interface)
     var apiGetMediaData: String = ""
     var apiGetMedia: String = ""
 

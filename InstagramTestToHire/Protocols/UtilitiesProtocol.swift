@@ -11,5 +11,5 @@ import UIKit
 protocol UtilitiesProtocol {
     func downloadImage(from url: URL, imageView: UIImageView)
     func getInstagramImagesFromAPI(completion: @escaping (String) -> Void)
-    func getLayout() -> UICollectionViewLayout 
+    func getLayout() -> UICollectionViewLayout
 }
