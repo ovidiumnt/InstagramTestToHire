@@ -10,9 +10,14 @@ import Foundation
 class InstagramApi : InstagramApiProtocol {
     
     // Implementation class of the InstagramApiProtocol protocol (interface)
-    // We conform to the protocol so we implement the interface properties and methods
     var apiGetMediaData: String = ""
     var apiGetMedia: String = ""
+
+    init(apiGetMediaData: String, apiGetMedia: String) {
+        self.apiGetMediaData = apiGetMediaData
+        self.apiGetMedia = apiGetMedia
+    }
+    
     var token: String = ""
     
     func getMediaData(completion: @escaping (UserFeed) -> Void) {
@@ -26,7 +31,11 @@ class InstagramApi : InstagramApiProtocol {
                 print(response!)
             }
             do {
-                let jsonData = try JSONDecoder().decode(UserFeed.self, from: data!)
+                guard let data = data else {
+                    return
+                }
+                
+                let jsonData = try JSONDecoder().decode(UserFeed.self, from: data)
                 print("JSON:\n\(jsonData.data)")
 
                 // We have the JSON
@@ -55,10 +64,14 @@ class InstagramApi : InstagramApiProtocol {
                         print(response!)
                     }
                     do {
-                        let jsonData = try JSONDecoder().decode(UserMedia.self, from: data!)
+                        guard let data = data else {
+                            return
+                        }
+                        
+                        let jsonData = try JSONDecoder().decode(UserMedia.self, from: data)
                         
                         // We have the json
-                        // So wa call the closure with it as a parameter
+                        // So we call the closure with it as a parameter
                         // The closure itself will create an array of media_url's
                         completion(jsonData)
                         

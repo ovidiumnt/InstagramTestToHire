@@ -12,20 +12,12 @@ private let reuseIdentifier = "dataCell"
 private let apiGetMediaData = "https://graph.instagram.com/me/media"
 private let apiGetMedia = "https://graph.instagram.com/"
 
-// We get an instance of InstagramApiFactory class (that implements / conform to the InstagramApiProtocol) using the injected factory
-private let instagramApi = InstagramApiFactory.instagramApiInstance()
+// Get an instance of InstagramApi class (that implements / conforms to the InstagramApiProtocol)
+private var instagramApi: InstagramApiProtocol = InstagramApi(apiGetMediaData: apiGetMediaData, apiGetMedia: apiGetMedia)
 
-// MARK: - CollectionView Layout
-// Extension cu customize the layout of
-extension ImagesCollectionViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width - 15 - 15, height: 240)
-    }
-      
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
-    }
-}
+// Get an instance of Utilities class
+// Using DI to pass the instance of InstagramApi class to the Utilities constructor
+private let utilities: UtilitiesProtocol = Utilities(instagramApi)
 
 // MARK: - Text Field Delegate
 // Extension for the editText delegate from the toolbar where we can set the token
@@ -40,9 +32,10 @@ extension ImagesCollectionViewController: UITextFieldDelegate {
         textField.addSubview(activityIndicator)
         activityIndicator.frame = textField.bounds
         
-        // Set the token and get the Instagram media!
+        // Set the token and get the Instagram media
         instagramApi.token = text
         mediaArray = NSMutableArray()
+        
         getInstagramImages()
         
         textField.text = nil
@@ -59,39 +52,13 @@ class ImagesCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-        //
-        // But we are using a prototype cell, so we don't this default behaviour
+        // Since we are using a prototype cell we don't need this default behaviour
         // self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
-        self.collectionView!.collectionViewLayout = self.getLayout()
-        
-        instagramApi.apiGetMediaData = apiGetMediaData
-        instagramApi.apiGetMedia = apiGetMedia
+        self.collectionView!.collectionViewLayout = utilities.getLayout()
 
         mediaArray = NSMutableArray()
         getInstagramImages()
-    }
-    
-    func getInstagramImages() {
-        instagramApi.getMedia { (userMedia: UserMedia) in
-            if userMedia.media_type != UserMedia.MediaType.VIDEO {
-                guard let mediaUrl = userMedia.media_url else {
-                    print("Media URL is null. There are no pictures or videos on the account.")
-                    return
-                }
-
-                self.mediaArray!.add(mediaUrl)
-                //print("Am gasit: \(self.mediaArray?.count) item-uri")
-            
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
-                }
-            }
-        }
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -108,35 +75,24 @@ class ImagesCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ImagesCollectionViewCell
-        cell.layer.cornerRadius = 8.0
+        
+        cell.layer.cornerRadius = 0.0
+        cell.clipsToBounds = true
         
         let url = URL(string: mediaArray![indexPath.row] as! String)
-        downloadImage(from: url!, imageView: cell.instagramImageView)
+        utilities.downloadImage(from: url!, imageView: cell.instagramImageView)
     
         return cell
     }
     
-    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
-        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
-    }
-    
-    func downloadImage(from url: URL, imageView: UIImageView) {
-        getData(from: url) { data, response, error in
-            guard let data = data, error == nil else { return }
-            print(response?.suggestedFilename ?? url.lastPathComponent)
+    func getInstagramImages() {
+        // Trailing closure syntax
+        utilities.getInstagramImagesFromAPI { (mediaUrl: String) in
+            self.mediaArray!.add(mediaUrl)
             
-            DispatchQueue.main.async() {
-                imageView.image = UIImage(data: data)
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
             }
         }
-    }
-    
-    func getLayout() -> UICollectionViewLayout {
-        let layout:UICollectionViewFlowLayout =  UICollectionViewFlowLayout()
-        
-        layout.itemSize = CGSize(width: 240, height: 240)
-        layout.sectionInset = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
-        
-        return layout as UICollectionViewLayout
     }
 }
