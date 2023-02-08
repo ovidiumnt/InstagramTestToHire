@@ -86,7 +86,7 @@ class ImagesCollectionViewController: UICollectionViewController {
     }
     
     func getInstagramImages() {
-        // Trailing closure syntax
+        // Trailing closure syntax 
         utilities.getInstagramImagesFromAPI { (mediaUrl: String) in
             self.mediaArray!.add(mediaUrl)
             

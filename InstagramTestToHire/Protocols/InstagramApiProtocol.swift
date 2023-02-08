@@ -9,7 +9,7 @@ import Foundation
 
 protocol InstagramApiProtocol {
     
-    // An protocol (interface) for Instagram API's
+    // An protocol (interface) for Instagram API's 
     var apiGetMediaData: String { get }
     var apiGetMedia: String { get }
     var token: String { get set }
